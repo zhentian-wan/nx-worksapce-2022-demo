@@ -15,11 +15,20 @@ npx create-nx-workspace ztwdev --projectManager=yarn
 ### Run the application
 
 ```bash
-yarn nx run site:serve
+TAILWIND_MODE=watch yarn nx run site:serve
 ```
 
 or
 
 ```bash
 yarn nx serve site
+```
+
+## Add Tailwind css
+
+```bash
+yarn add tailwindcss@latest postcss@latest autoprefixer@latest
+cd apps/site
+npx tailwindcss init -p
+
 ```
