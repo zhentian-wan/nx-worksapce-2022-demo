@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { getParsedFileContentBySlug, renderMarkdown } from '@ztwdev/markdown';
+import { Youtube } from '@ztwdev/shared/mdx-element';
 import { MDXRemote } from 'next-mdx-remote';
 
 export interface ArticleProps extends ParsedUrlQuery {
@@ -10,6 +11,8 @@ export interface ArticleProps extends ParsedUrlQuery {
 }
 
 const POSTS_PATH = join(process.cwd(), '_articles');
+
+const mdxElement = { Youtube };
 
 export function Article({ frontMatter, html }) {
   return (
@@ -19,7 +22,7 @@ export function Article({ frontMatter, html }) {
         <div>by {frontMatter.author.name}</div>
       </article>
       <hr />
-      <MDXRemote {...html} />
+      <MDXRemote {...html} components={mdxElement} />
     </div>
   );
 }

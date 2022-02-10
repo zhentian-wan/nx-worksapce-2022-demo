@@ -1,0 +1,23 @@
+{
+  "root": "libs/shared/mdx-element",
+  "sourceRoot": "libs/shared/mdx-element/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/mdx-element/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/mdx-element"],
+      "options": {
+        "jestConfig": "libs/shared/mdx-element/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

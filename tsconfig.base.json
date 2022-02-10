@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ztwdev/markdown": ["libs/markdown/src/index.ts"]
+      "@ztwdev/markdown": ["libs/markdown/src/index.ts"],
+      "@ztwdev/shared/mdx-element": ["libs/shared/mdx-element/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
