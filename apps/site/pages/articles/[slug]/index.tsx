@@ -11,7 +11,7 @@ export interface ArticleProps extends ParsedUrlQuery {
   slug: string;
 }
 
-const POSTS_PATH = join(process.cwd(), '_articles');
+const POSTS_PATH = join(process.cwd(), process.env.articleMarkdownPath);
 
 /**
  * When dealing with Dynamic import libs
