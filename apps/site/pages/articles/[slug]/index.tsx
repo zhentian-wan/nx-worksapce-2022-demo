@@ -3,8 +3,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { getParsedFileContentBySlug, renderMarkdown } from '@ztwdev/markdown';
-import { Youtube, CustomLink } from '@ztwdev/shared/mdx-element';
+import { CustomLink } from '@ztwdev/shared/mdx-element';
 import { MDXRemote } from 'next-mdx-remote';
+import dynamic from 'next/dynamic';
 
 export interface ArticleProps extends ParsedUrlQuery {
   slug: string;
@@ -12,7 +13,19 @@ export interface ArticleProps extends ParsedUrlQuery {
 
 const POSTS_PATH = join(process.cwd(), '_articles');
 
-const mdxElement = { Youtube, a: CustomLink };
+/**
+ * When dealing with Dynamic import libs
+ * You need to conside the size of lib iteself.
+ * You can further split the details path for each components in tsconifg
+  "@ztwdev/shared/mdx-element": ["libs/shared/mdx-element/src/index.ts"],
+  "@ztwdev/shared/mdx-element/*": ["libs/shared/mdx-element/src/lib/*"]
+ */
+const mdxElement = {
+  Youtube: dynamic(async () => {
+    return await import('@ztwdev/shared/mdx-element/youtube/youtube');
+  }),
+  a: CustomLink,
+};
 
 export function Article({ frontMatter, html }) {
   return (

@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@ztwdev/markdown": ["libs/markdown/src/index.ts"],
-      "@ztwdev/shared/mdx-element": ["libs/shared/mdx-element/src/index.ts"]
+      "@ztwdev/shared/mdx-element": ["libs/shared/mdx-element/src/index.ts"],
+      "@ztwdev/shared/mdx-element/*": ["libs/shared/mdx-element/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
